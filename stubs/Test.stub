@@ -1,0 +1,38 @@
+<?php
+
+namespace Tests\Browser\Tomato;
+
+use TomatoPHP\TomatoDusk\Services\Components\Log;
+use TomatoPHP\TomatoDusk\Services\Core\Browser;
+use TomatoPHP\TomatoDusk\Services\Core\Chrome;
+
+class {{ name }}Test
+{
+    private Chrome $dusk;
+
+    public static function make():self
+    {
+        return new self();
+    }
+
+    public function __construct()
+    {
+        $this->dusk = Browser::make('web')->run();
+    }
+
+    public function run():void
+    {
+        try {
+            $this->dusk->browse(function ($browser) {
+                //Your Logic Here
+            });
+
+        }catch (\Exception $e){
+            if(!strpos($e, 'file_put_contents')){
+                Log::make("Login Failed Error: " . $e)->type('danger')->save();
+            }
+        }
+
+        $this->dusk->stop();
+    }
+}
