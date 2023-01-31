@@ -9,33 +9,6 @@ Laravel Dusk unit test with GUI for Tomato Framework
 ```bash
 composer require tomatophp/tomato-dusk
 ```
-after install use this command to install dusk
-
-```bash
-php artisan tomato-dusk:install
-```
-
-## Using
-
-it's very easy to use just use this command
-
-```bash
-php artisan tomato:test
-```
-
-it will ask you about the test case name and it will generate a test class on path `tests/Browser/Tomato`
-
-after you generate it you can add your code and after that register the class on the `tomato-dusk.php` config file and run
-
-```bash
-php artisan config:cache
-```
-
-you now can run your test cases by GUI or this command
-
-```bash
-php artisan tomato-dusk:run
-```
 
 ## Support
 
