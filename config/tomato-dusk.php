@@ -2,6 +2,6 @@
 
 return [
     'classes' => [
-        \Queents\TomatoDusk\Tests\UserLogin::class
+        \TomatoPHP\TomatoDusk\Tests\UserLogin::class
     ]
 ];
