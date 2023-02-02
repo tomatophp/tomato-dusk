@@ -33,7 +33,6 @@ class TomatoDuskInstall extends Command
     {
         $this->info('Publish Vendor Assets');
         $this->callSilent('optimize:clear');
-        $this->call('vendor:publish', ['--provider' => 'TomatoPHP\TomatoDusk\TomatoDuskServiceProvider']);
         $this->artisanCommand(['dusk:install']);
         $this->yarnCommand(['install']);
         $this->yarnCommand(['build']);
