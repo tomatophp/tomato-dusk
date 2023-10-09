@@ -11,7 +11,7 @@ use TomatoPHP\TomatoDusk\Http\Requests\TestLog\TestLogStoreRequest;
 use TomatoPHP\TomatoDusk\Http\Requests\TestLog\TestLogUpdateRequest;
 use TomatoPHP\TomatoDusk\Models\TestLog;
 use TomatoPHP\TomatoDusk\Tables\TestLogTable;
-use TomatoPHP\TomatoPHP\Services\Tomato;
+use TomatoPHP\TomatoAdmin\Facade\Tomato;
 
 class TestLogController extends Controller
 {
@@ -24,6 +24,7 @@ class TestLogController extends Controller
         if(is_developer()){
             return Tomato::index(
                 request: $request,
+                model: TestLog::class,
                 view: 'tomato-dusk::test_logs.index',
                 table: TestLogTable::class,
             );
@@ -57,11 +58,13 @@ class TestLogController extends Controller
     public function destroy(TestLog $model): RedirectResponse
     {
         if(is_developer()) {
-            return Tomato::destroy(
+            $response = Tomato::destroy(
                 model: $model,
                 message: 'TestLog deleted successfully',
                 redirect: 'admin.test_logs.index',
             );
+
+            return $response->redirect;
         }
 
         return developer_redirect();

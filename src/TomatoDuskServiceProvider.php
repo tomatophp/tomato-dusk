@@ -6,8 +6,9 @@ use Illuminate\Support\ServiceProvider;
 use TomatoPHP\TomatoDusk\Console\TestGeneratorCommand;
 use TomatoPHP\TomatoDusk\Console\TomatoDuskInstall;
 use TomatoPHP\TomatoDusk\Console\TomatoDuskRun;
-use TomatoPHP\TomatoDusk\Menus\TestLogMenu;
-use TomatoPHP\TomatoPHP\Services\Menu\TomatoMenuRegister;
+
+use TomatoPHP\TomatoAdmin\Services\Contracts\Menu;
+use TomatoPHP\TomatoAdmin\Facade\TomatoMenu;
 
 
 class TomatoDuskServiceProvider extends ServiceProvider
@@ -56,12 +57,16 @@ class TomatoDuskServiceProvider extends ServiceProvider
         //Register Routes
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        TomatoMenuRegister::registerMenu(TestLogMenu::class);
-
     }
 
     public function boot(): void
     {
-        //you boot methods here
+        TomatoMenu::register(
+            Menu::make()
+                ->label("Dusk")
+                ->group(__('Tools'))
+                ->icon("bx bx-test-tube")
+                ->route("admin.test-logs.index")
+        );
     }
 }
