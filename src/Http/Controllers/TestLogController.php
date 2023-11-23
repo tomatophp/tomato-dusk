@@ -25,7 +25,7 @@ class TestLogController extends Controller
             return Tomato::index(
                 request: $request,
                 model: TestLog::class,
-                view: 'tomato-dusk::test_logs.index',
+                view: 'tomato-dusk::test-logs.index',
                 table: TestLogTable::class,
             );
         }
@@ -43,7 +43,7 @@ class TestLogController extends Controller
         if(is_developer()) {
             return Tomato::get(
                 model: $model,
-                view: 'tomato-dusk::test_logs.show',
+                view: 'tomato-dusk::test-logs.show',
             );
         }
 
@@ -61,7 +61,7 @@ class TestLogController extends Controller
             $response = Tomato::destroy(
                 model: $model,
                 message: 'TestLog deleted successfully',
-                redirect: 'admin.test_logs.index',
+                redirect: 'admin.test-logs.index',
             );
 
             return $response->redirect;

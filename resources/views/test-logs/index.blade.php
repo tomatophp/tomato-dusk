@@ -1,6 +1,6 @@
 <x-tomato-admin-layout>
     <x-slot name="header">
-        {{ __('TestLog') }}
+        {{ __('Dusk Log') }}
     </x-slot>
     <x-slot:buttons>
         <div class="flex justifiy-start gap-4">

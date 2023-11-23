@@ -8,7 +8,7 @@ use TomatoPHP\TomatoDusk\Services\Core\Chrome;
 
 class {{ name }}Test
 {
-    private Chrome $dusk;
+    private Chrome | bool $dusk;
 
     public static function make():self
     {
